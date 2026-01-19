@@ -245,7 +245,7 @@ export default function Home() {
           <WaveIcon />
         </div>
         <span className="text-lg font-bold text-white whitespace-nowrap">
-          Ocean Adventures
+          Muthu Tours
         </span>
       </div>
 
@@ -323,9 +323,9 @@ export default function Home() {
           <Badge className="bg-secondary text-secondary-foreground mb-6 text-sm px-4 py-1.5 font-medium">
             Award-Winning Ocean Tours Since 2010
           </Badge>
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            Discover the Magic of the
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-teal-200">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            Discover Magic of the
+            <span className="block text-transparent bg-clip-text text-8xl bg-gradient-to-r from-cyan-300 to-teal-200">
               Ocean
             </span>
           </h1>
