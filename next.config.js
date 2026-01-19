@@ -68,11 +68,6 @@ const nextConfig = {
       },
     ],
   },
-  // Disable the dev indicator panel completely
-  devIndicators: {
-    buildActivity: false,
-    appIsrStatus: false,
-  },
   // Additional settings to disable dev overlays
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
