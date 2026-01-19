@@ -130,12 +130,12 @@ const tours = [
   },
   {
     id: "fishing",
-    title: "Deep Sea Fishing Charter",
+    title: "Fishing Tours",
     description: "Cast your line into the deep blue and reel in the catch of a lifetime.",
     price: 199,
     duration: "6 hours",
     maxGuests: 6,
-    image: "https://images.unsplash.com/photo-1545816250-e12bedba42ba?w=800&h=600&fit=crop",
+    image: "/images/big fish.jpeg",
     features: ["All tackle included", "Professional crew", "Fish cleaning service", "Keep your catch"],
     badge: "Premium",
     badgeColor: "bg-primary text-primary-foreground",
@@ -178,12 +178,37 @@ const testimonials = [
 ];
 
 const galleryImages = [
+  // Original 6 images
   { src: "https://loveoahu.org/wp-content/uploads/humpback-whale-breaching.jpg", alt: "Humpback whale breaching" },
   { src: "https://media.tacdn.com/media/attractions-splice-spp-674x446/12/3b/57/6b.jpg", alt: "Underwater fish" },
   { src: "https://cdn.sanity.io/images/xhhnkk4g/production/20d3ad8979067e629372b298a018dbb274b2d1eb-1080x1630.webp?w=800&q=65&fit=clip&auto=format", alt: "Whale watching" },
   { src: "https://www.dolphindiscoveries.com/wp-content/uploads/sites/5541/2023/04/snorkeling-hawaii-big-island.jpeg?w=700&h=700&zoom=2", alt: "Snorkeling boat" },
   { src: "https://d1jyxxz9imt9yb.cloudfront.net/article/5517/meta_image/regular/5-Whale-Watching-Humpback-Breaching-Stellwagen_reduced.jpg", alt: "Whale with boat" },
   { src: "https://cdn.sanity.io/images/esqfj3od/production/3bf47706fcbf56cf473827e4f2fcdbe0383d8242-1080x720.webp?w=800&q=65&fit=clip&auto=format", alt: "Snorkeling with whale shark" },
+  
+  // New local images - all with same descriptive text
+  { src: "/images/1.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/2.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/3.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/4.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/5.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/6.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/7.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/8.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/9.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/10.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/11.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/12.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/13.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/14.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/15.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/16.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/17.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/18.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/19.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/20.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/21.jpeg", alt: "Muthu Tour destination" }
+  
 ];
 
 export default function Home() {
@@ -330,7 +355,7 @@ export default function Home() {
             </span>
           </h1>
           <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Embark on unforgettable adventures with snorkeling, whale watching, and deep sea fishing tours. Create memories that will last a lifetime.
+           Love adventures? Grab the chance! Feel the art of snorkeling with whales in an amusing Eco-friendly manner in Mirissa.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -491,7 +516,8 @@ export default function Home() {
                 Your Trusted <span className="text-gradient-ocean">Ocean Guides</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Since 2010, Ocean Adventures has been the premier choice for ocean enthusiasts seeking authentic, safe, and unforgettable marine experiences. Our passionate team of certified captains and marine experts are dedicated to sharing the wonders of the ocean with you.
+                Muthu tours Mirissa is a local business which provide facilities to experience the oceanic glamour of Southern Sri Lanka. We fulfill your expectations in a memorable and safety manner. We are ready to customize our trips and packages as your requests.
+                Try Muthu tours to get the best out of your trip to Sri Lanka.
               </p>
               <div className="grid sm:grid-cols-2 gap-6 mb-8">
                 {[
@@ -590,9 +616,9 @@ export default function Home() {
 
               <div className="space-y-6">
                 {[
-                  { icon: <MapPinIcon />, title: "Location", content: "123 Harbor Drive, Oceanside Marina, CA 92054" },
-                  { icon: <PhoneIcon />, title: "Phone", content: "(555) 123-4567" },
-                  { icon: <MailIcon />, title: "Email", content: "hello@oceanadventures.com" },
+                  { icon: <MapPinIcon />, title: "Location", content: "49 A, Bandaramulla, Mirissa, Srilanka." },
+                  { icon: <PhoneIcon />, title: "Phone", content: "+94 71 4343478, +94 71 4013477(whatsapp)" },
+                  { icon: <MailIcon />, title: "Email", content: " muthutoursmirissa@gmail.com" },
                   { icon: <ClockIcon />, title: "Hours", content: "Daily: 6:00 AM - 8:00 PM" },
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-4">
