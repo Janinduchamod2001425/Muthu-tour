@@ -13,7 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
-// Icons as SVG components
+// --- Icons ---
 const WaveIcon = () => (
   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M2 12c.8-.9 1.8-1.5 3-1.5s2.2.6 3 1.5c.8.9 1.8 1.5 3 1.5s2.2-.6 3-1.5c.8-.9 1.8-1.5 3-1.5s2.2.6 3 1.5" />
@@ -21,16 +21,8 @@ const WaveIcon = () => (
   </svg>
 );
 
-const FishIcon = () => (
-  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M6.5 12c2.5-4 6.5-4 10 0-3.5 4-7.5 4-10 0z" />
-    <path d="M17 12c1.5-1.5 3-2 4-1.5-1 .5-1.5 2-4 1.5z" />
-    <circle cx="8" cy="12" r="1" fill="currentColor" />
-  </svg>
-);
-
-const AnchorIcon = () => (
-  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+const AnchorIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
+  <svg width={size} height={size} className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <circle cx="12" cy="5" r="3" />
     <line x1="12" y1="8" x2="12" y2="21" />
     <path d="M5 12H2a10 10 0 0020 0h-3" />
@@ -65,7 +57,7 @@ const ClockIcon = () => (
 );
 
 const StarIcon = ({ filled = true }: { filled?: boolean }) => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
+  <svg className="w-4 h-4" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
   </svg>
 );
@@ -87,120 +79,121 @@ const UsersIcon = () => (
   </svg>
 );
 
-const CalendarIcon = () => (
-  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-    <line x1="16" y1="2" x2="16" y2="6" />
-    <line x1="8" y1="2" x2="8" y2="6" />
-    <line x1="3" y1="10" x2="21" y2="10" />
-  </svg>
-);
-
 const CheckIcon = () => (
   <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <polyline points="20 6 9 17 4 12" />
   </svg>
 );
 
-// Tour data
+// --- Data ---
 const tours = [
   {
+    id: "deep-sea-fishing",
+    title: "Deep Sea Fishing",
+    description:
+      "Enjoy an authentic deep-sea fishing adventure off the stunning Mirissa coast. Perfect for adventure lovers looking for a hands-on ocean experience.",
+    price: 100,
+    duration: "4–6 hours",
+    maxGuests: 10,
+    image: "/images/bigfish.jpeg",
+    features: [
+      "Early morning or afternoon",
+      "Pro fishing equipment",
+      "Experienced local crew",
+      "Safety briefing & life jackets",
+      "Catch tuna & barracuda",
+      "Fresh catch cooking available"
+    ],
+    badge: "Adventure Pick",
+    badgeColor: "bg-amber-500 text-white",
+  },
+  {
     id: "snorkeling",
-    title: "Snorkeling Adventure",
-    description: "Explore vibrant coral reefs and swim with tropical fish in crystal-clear waters.",
-    price: 89,
+    title: "Snorkeling with Turtles",
+    description: "Discover vibrant coral reefs, colorful tropical fish, and swim alongside sea turtles in the clear waters near Mirissa.",
+    price: 35,
     duration: "3 hours",
     maxGuests: 12,
     image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop",
-    features: ["Equipment provided", "Guided tour", "Snacks & drinks", "Photo package available"],
+    features: [
+      "All equipment provided",
+      "Professional instructor",
+      "Visit turtle hotspots",
+      "Fruits & refreshments",
+      "Shallow & safe areas",
+      "Eco-friendly practices"
+    ],
     badge: "Most Popular",
-    badgeColor: "bg-secondary text-secondary-foreground",
+    badgeColor: "bg-blue-600 text-white",
   },
   {
-    id: "whale-watching",
-    title: "Whale Watching Expedition",
-    description: "Witness majestic humpback whales in their natural habitat during migration season.",
-    price: 129,
-    duration: "4 hours",
-    maxGuests: 20,
-    image: "https://images.unsplash.com/photo-1568430462989-44163eb1752f?w=800&h=600&fit=crop",
-    features: ["Marine biologist guide", "Whale sighting guarantee", "Hot beverages", "Binoculars provided"],
-    badge: "Seasonal",
-    badgeColor: "bg-accent text-accent-foreground",
-  },
-  {
-    id: "fishing",
-    title: "Fishing Tours",
-    description: "Cast your line into the deep blue and reel in the catch of a lifetime.",
-    price: 199,
-    duration: "6 hours",
-    maxGuests: 6,
-    image: "/images/big fish.jpeg",
-    features: ["All tackle included", "Professional crew", "Fish cleaning service", "Keep your catch"],
-    badge: "Premium",
-    badgeColor: "bg-primary text-primary-foreground",
+    id: "snorkeling-whales",
+    title: "Snorkeling with Whales",
+    description: "A rare opportunity to snorkel near gentle giants. A responsible wildlife experience strictly adhering to safety guidelines.",
+    price: 80,
+    duration: "4–5 hours",
+    maxGuests: 8,
+    image: "https://cdn.sanity.io/images/esqfj3od/production/3bf47706fcbf56cf473827e4f2fcdbe0383d8242-1080x720.webp?w=800&q=65&fit=clip&auto=format",
+    features: [
+      "Responsible approach",
+      "High-quality gear",
+      "Expert marine guide",
+      "Weather dependent",
+      "Photos included",
+      "Seasonal (Dec–Apr)"
+    ],
+    badge: "Unique Experience",
+    badgeColor: "bg-cyan-500 text-white",
   },
 ];
 
 const testimonials = [
   {
-    name: "Sarah Mitchell",
+    name: "Sarah Davies",
     location: "San Diego, CA",
     rating: 5,
-    text: "The snorkeling tour was absolutely magical! Our guide was incredibly knowledgeable and we saw so many beautiful fish. This was the highlight of our vacation!",
-    tour: "Snorkeling Adventure",
+    text: "Muthu offered to send me photos of dolphins that had been captured the day before. He is a honest and trustworthy guide. Highly recommend trips with him.",
+    tour: "Deep Sea Fishing",
     avatar: "S",
   },
   {
-    name: "James & Family",
+    name: "Beate Blaser",
     location: "Austin, TX",
     rating: 5,
-    text: "Took the whole family on the whale watching expedition. The kids were thrilled when we spotted a mother and calf! The crew made everyone feel safe and excited.",
+    text: "It was great! Thank you so much for the wonderful experience.",
     tour: "Whale Watching",
-    avatar: "J",
+    avatar: "B",
   },
   {
-    name: "Michael Chen",
-    location: "Seattle, WA",
+    name: "Abdulsalam B.",
+    location: "United Kingdom",
     rating: 5,
-    text: "Best fishing charter I've ever been on! Captain Joe knew exactly where to find the big ones. Caught a 40lb mahi-mahi that we had prepared at a local restaurant.",
+    text: "With Mutu as my guide, we spotted whales on the first attempt! A surreal experience. He is a wonderful man full of knowledge.",
     tour: "Deep Sea Fishing",
-    avatar: "M",
+    avatar: "A",
   },
   {
     name: "Emma Rodriguez",
     location: "Miami, FL",
     rating: 5,
-    text: "Professional, friendly, and so much fun! The boat was clean and comfortable. I've already recommended Ocean Adventures to all my friends.",
+    text: "Professional, friendly, and so much fun! The boat was clean and comfortable. I've already recommended this to friends.",
     tour: "Snorkeling Adventure",
     avatar: "E",
   },
 ];
 
 const galleryImages = [
-  // Original 6 images
-  { src: "https://loveoahu.org/wp-content/uploads/humpback-whale-breaching.jpg", alt: "Humpback whale breaching" },
-  { src: "https://media.tacdn.com/media/attractions-splice-spp-674x446/12/3b/57/6b.jpg", alt: "Underwater fish" },
-  { src: "https://cdn.sanity.io/images/xhhnkk4g/production/20d3ad8979067e629372b298a018dbb274b2d1eb-1080x1630.webp?w=800&q=65&fit=clip&auto=format", alt: "Whale watching" },
-  { src: "https://www.dolphindiscoveries.com/wp-content/uploads/sites/5541/2023/04/snorkeling-hawaii-big-island.jpeg?w=700&h=700&zoom=2", alt: "Snorkeling boat" },
-  { src: "https://d1jyxxz9imt9yb.cloudfront.net/article/5517/meta_image/regular/5-Whale-Watching-Humpback-Breaching-Stellwagen_reduced.jpg", alt: "Whale with boat" },
-  { src: "https://cdn.sanity.io/images/esqfj3od/production/3bf47706fcbf56cf473827e4f2fcdbe0383d8242-1080x720.webp?w=800&q=65&fit=clip&auto=format", alt: "Snorkeling with whale shark" },
-  
-  // New local images - all with same descriptive text
-  { src: "/images/1.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/14.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/2.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/3.jpeg", alt: "Muthu Tour destination" },
-  { src: "/images/4.jpeg", alt: "Muthu Tour destination" },
-  { src: "/images/5.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/6.jpeg", alt: "Muthu Tour destination" },
-  { src: "/images/7.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/8.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/9.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/10.jpeg", alt: "Muthu Tour destination" },
-  { src: "/images/11.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/23.jpeg", alt: "Muthu Tour destination" },
+  { src: "/images/24.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/12.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/13.jpeg", alt: "Muthu Tour destination" },
-  { src: "/images/14.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/15.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/16.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/17.jpeg", alt: "Muthu Tour destination" },
@@ -208,27 +201,28 @@ const galleryImages = [
   { src: "/images/19.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/20.jpeg", alt: "Muthu Tour destination" },
   { src: "/images/21.jpeg", alt: "Muthu Tour destination" }
-  
 ];
 
 export default function Home() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
   const [selectedTour, setSelectedTour] = useState<string>("");
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isGalleryExpanded, setIsGalleryExpanded] = useState(false);
+  const initialGalleryCount = 5;
 
-  // Scroll effect for navbar
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { href: "#tours", label: "Tours" },
+    { href: "#tours", label: "Experiences" },
     { href: "#gallery", label: "Gallery" },
     { href: "#about", label: "About" },
     { href: "#testimonials", label: "Reviews" },
@@ -240,225 +234,236 @@ export default function Home() {
     setBookingOpen(true);
   };
 
+  const scrollToContact = () => {
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen font-sans antialiased text-slate-900 selection:bg-cyan-200 selection:text-cyan-900">
       
-      {/* <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden">
-        <div className="dolphin dolphin-1">🐬</div>
-        <div className="dolphin dolphin-2">🐬</div>
-        <div className="dolphin dolphin-3">🐬</div>
-      </div> */}
-
-      {/* Navigation */}
+      {/* --- Navigation --- */}
       <nav
-  className={`fixed top-4 left-1/2 -translate-x-1/2 z-50
-  transition-all duration-300 ease-in-out
-  ${
-    scrolled
-      ? "bg-blue-950/80 shadow-xl shadow-blue-900/40"
-      : "bg-blue-900/40"
-  }
-  backdrop-blur-md border border-blue-400/20
-  rounded-full`}
->
-  <div className="max-w-7xl mx-auto px-6">
-    <div className="flex items-center justify-between h-14 gap-6">
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out border-b border-transparent
+        ${scrolled 
+          ? "bg-white/80 backdrop-blur-xl shadow-lg border-white/20 py-3" 
+          : "bg-transparent py-5"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          
+          {/* Logo */}
+          <div className="flex items-center gap-2 group cursor-pointer">
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 shadow-md
+              ${scrolled ? "bg-blue-600 text-white" : "bg-white text-blue-600"}`}>
+              <WaveIcon />
+            </div>
+            <span className={`text-xl font-bold tracking-tight transition-colors duration-300
+              ${scrolled ? "text-slate-900" : "text-white"}`}>
+              gomirissa
+            </span>
+          </div>
 
-      {/* Logo */}
-      <div className="flex items-center gap-2">
-        <div className="w-9 h-9 rounded-full gradient-ocean flex items-center justify-center text-white">
-          <WaveIcon />
-        </div>
-        <span className="text-lg font-bold text-white whitespace-nowrap">
-          Muthu Tours
-        </span>
-      </div>
-
-      {/* Desktop Nav */}
-      <div className="hidden md:flex items-center gap-6">
-        {navLinks.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            className="text-white/80 hover:text-white transition-colors text-sm font-medium"
-          >
-            {link.label}
-          </a>
-        ))}
-        <Button className="gradient-ocean h-9 px-4 text-sm rounded-full">
-          Book Now
-        </Button>
-      </div>
-
-      {/* Mobile */}
-      <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-        <SheetTrigger asChild className="md:hidden">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="text-white hover:bg-white/10 rounded-full"
-          >
-            <MenuIcon />
-          </Button>
-        </SheetTrigger>
-        <SheetContent side="right" className="w-72">
-          <div className="flex flex-col gap-6 mt-8">
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-lg font-medium"
+                className={`text-sm font-medium hover:text-cyan-500 transition-colors duration-200
+                  ${scrolled ? "text-slate-600" : "text-white/90"}`}
               >
                 {link.label}
               </a>
             ))}
-            <Button className="gradient-ocean mt-4 rounded-full">
+            <Button 
+              onClick={() => setBookingOpen(true)}
+              className={`rounded-full px-6 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105
+              ${scrolled 
+                ? "bg-blue-600 hover:bg-blue-700 text-white" 
+                : "bg-white hover:bg-blue-50 text-blue-900"}`}
+            >
               Book Now
             </Button>
           </div>
-        </SheetContent>
-      </Sheet>
 
-    </div>
-  </div>
-</nav>
+          {/* Mobile Toggle */}
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild className="md:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                className={`rounded-full ${scrolled ? "text-slate-900" : "text-white hover:bg-white/20"}`}
+              >
+                <MenuIcon />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-80 bg-white/95 backdrop-blur-xl border-l border-white/20 p-8">
+              <div className="flex flex-col gap-6 mt-12">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-2xl font-medium text-slate-800 hover:text-blue-600 transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                ))}
+                <div className="h-px bg-slate-200 my-2" />
+                <Button onClick={() => setBookingOpen(true)} className="bg-blue-600 hover:bg-blue-700 w-full py-6 text-lg rounded-xl shadow-lg shadow-blue-200">
+                  Book Adventure
+                </Button>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+      </nav>
 
-
-
-      {/* Hero Section with Background Video */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video */}
+      {/* --- Hero Section --- */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        {/* Video Background */}
         <div className="absolute inset-0">
           <video
             autoPlay
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover"
+            className="absolute inset-0 w-full h-full object-cover scale-105"
           >
             <source src="/videos/fish.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
           </video>
-          {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+          {/* Gradient Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-slate-900/90" />
         </div>
 
-        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-          <Badge className="bg-secondary text-secondary-foreground mb-6 text-sm px-4 py-1.5 font-medium">
-            Award-Winning Ocean Tours Since 2010
-          </Badge>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            Discover Magic of the
-            <span className="block text-transparent bg-clip-text text-8xl bg-gradient-to-r from-cyan-300 to-teal-200">
-              Ocean
+        <div className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-sm font-medium mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+            Top Rated Ocean Tours in Mirissa
+          </div>
+          
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-[0.9] tracking-tighter drop-shadow-sm animate-in fade-in slide-in-from-bottom-6 duration-1000 fill-mode-backwards delay-100">
+            Discover the <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-200 to-white">
+              Deep Blue
             </span>
           </h1>
-          <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-           Love adventures? Grab the chance! Feel the art of snorkeling with whales in an amusing Eco-friendly manner in Mirissa.
+          
+          <p className="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto leading-relaxed font-light animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+            Experience the thrill of deep-sea fishing and the serenity of snorkeling with Muthu Tours. 
+            Your gateway to Sri Lanka's underwater wonders.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
             <Button
               size="lg"
               onClick={() => setBookingOpen(true)}
-              className="gradient-ocean text-lg px-8 py-6 hover:opacity-90 transition-all transform hover:scale-105 shadow-xl"
+              className="bg-blue-600 hover:bg-blue-500 text-white rounded-full px-10 py-7 text-lg shadow-[0_0_40px_-10px_rgba(37,99,235,0.5)] transition-transform hover:scale-105"
             >
-              Book Your Adventure
+              Start Adventure
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="text-lg px-8 py-6 bg-white/10 border-white/30 text-white hover:bg-white/20 backdrop-blur-sm"
+              className="bg-white/5 border-white/30 text-white hover:bg-white/20 hover:text-white rounded-full px-10 py-7 text-lg backdrop-blur-sm transition-transform hover:scale-105"
               asChild
             >
-              <a href="#tours">Explore Tours</a>
+              <a href="#tours">View Packages</a>
             </Button>
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2">
-            <div className="w-1.5 h-3 bg-white/50 rounded-full" />
-          </div>
-        </div>
-      </section>
-
-      {/* Features Bar */}
-      <section className="bg-white py-6 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {/* Floating Features Bar (Glassmorphism) */}
+        <div className="absolute bottom-8 left-4 right-4 md:bottom-12 md:left-1/2 md:-translate-x-1/2 md:w-auto w-auto z-20">
+          <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-4 md:px-8 md:py-5 flex flex-wrap justify-center gap-6 md:gap-12 shadow-2xl">
             {[
-              { icon: <AnchorIcon />, text: "Expert Captains" },
-              { icon: <UsersIcon />, text: "Small Groups" },
-              { icon: <CheckIcon />, text: "Safety First" },
-              { icon: <StarIcon />, text: "5-Star Rated" },
+              { icon: <AnchorIcon size={20} />, text: "Expert Captains" },
+              { icon: <UsersIcon />, text: "Private Groups" },
+              { icon: <CheckIcon />, text: "Safety Certified" },
+              { icon: <StarIcon />, text: "4.9/5 Rating" },
             ].map((item, idx) => (
-              <div key={idx} className="flex items-center justify-center gap-3 text-primary">
-                {item.icon}
-                <span className="font-medium text-foreground">{item.text}</span>
+              <div key={idx} className="flex items-center gap-2 text-white/90">
+                <div className="text-cyan-300">{item.icon}</div>
+                <span className="text-sm font-semibold tracking-wide">{item.text}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Tours Section */}
-      <section id="tours" className="py-20 bg-gradient-to-b from-background to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge className="bg-primary/10 text-primary mb-4">Our Experiences</Badge>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              Choose Your <span className="text-gradient-ocean">Adventure</span>
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              From peaceful snorkeling to thrilling fishing expeditions, we have the perfect ocean experience waiting for you.
-            </p>
+      {/* --- Tours Section --- */}
+      <section id="tours" className="py-24 bg-slate-50 relative">
+        <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-slate-900/5 to-transparent pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div className="max-w-2xl">
+              <span className="text-blue-600 font-bold tracking-wider uppercase text-sm mb-2 block">Our Packages</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">
+                Choose Your <span className="text-blue-600">Expedition</span>
+              </h2>
+              <p className="text-slate-600 mt-4 text-lg">
+                Curated experiences for every type of traveler. From adrenaline-pumping fishing to peaceful snorkeling.
+              </p>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {tours.map((tour) => (
-              <Card key={tour.id} className="group overflow-hidden border-0 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="relative h-56 overflow-hidden">
+              <Card 
+                key={tour.id} 
+                className="group border-0 bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 overflow-hidden flex flex-col h-full"
+              >
+                {/* Image Area */}
+                <div className="relative h-64 overflow-hidden">
                   <img
                     src={tour.image}
                     alt={tour.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <Badge className={`absolute top-4 left-4 ${tour.badgeColor}`}>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                  <Badge className={`absolute top-4 left-4 border-0 px-3 py-1.5 ${tour.badgeColor} shadow-lg backdrop-blur-sm`}>
                     {tour.badge}
                   </Badge>
+                  <div className="absolute bottom-4 left-4 right-4 flex justify-between items-end text-white">
+                    <div>
+                      <div className="flex items-center gap-1.5 text-xs font-medium bg-black/30 backdrop-blur-md px-2 py-1 rounded-md mb-2 w-fit">
+                        <ClockIcon /> {tour.duration}
+                      </div>
+                      <h3 className="text-2xl font-bold leading-tight">{tour.title}</h3>
+                    </div>
+                  </div>
                 </div>
-                <CardHeader>
-                  <CardTitle className="text-xl">{tour.title}</CardTitle>
-                  <CardDescription className="text-base">{tour.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                    <span className="flex items-center gap-1">
-                      <ClockIcon />
-                      {tour.duration}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <UsersIcon />
-                      Max {tour.maxGuests} guests
-                    </span>
-                  </div>
-                  <ul className="space-y-2">
-                    {tour.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-sm">
-                        <CheckIcon />
+
+                {/* Content Area */}
+                <CardContent className="p-6 flex-grow">
+                  <p className="text-slate-600 mb-6 leading-relaxed">{tour.description}</p>
+                  
+                  <div className="space-y-3 mb-6">
+                    {tour.features.slice(0, 4).map((feature, idx) => (
+                      <div key={idx} className="flex items-start gap-3 text-sm text-slate-700">
+                        <div className="text-green-500 mt-0.5"><CheckIcon /></div>
                         <span>{feature}</span>
-                      </li>
+                      </div>
                     ))}
-                  </ul>
-                </CardContent>
-                <CardFooter className="flex items-center justify-between pt-4 border-t">
-                  <div>
-                    <span className="text-3xl font-bold text-primary">${tour.price}</span>
-                    <span className="text-muted-foreground">/person</span>
                   </div>
-                  <Button onClick={() => handleBookNow(tour.id)} className="gradient-ocean hover:opacity-90">
+                </CardContent>
+
+                <CardFooter className="p-6 pt-0 mt-auto flex items-center justify-between border-t border-slate-100 bg-slate-50/50">
+                  <div className="flex flex-col">
+                    <span className="text-sm text-slate-500">Starting from</span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-2xl font-bold text-slate-900">${tour.price}</span>
+                      <span className="text-slate-500">/person</span>
+                    </div>
+                  </div>
+                  <Button 
+                    onClick={() => handleBookNow(tour.id)} 
+                    className="bg-slate-900 hover:bg-slate-800 text-white rounded-xl px-6 h-12 shadow-lg hover:shadow-xl transition-all"
+                  >
                     Book Now
                   </Button>
                 </CardFooter>
@@ -468,130 +473,172 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section id="gallery" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge className="bg-accent/10 text-accent mb-4">Gallery</Badge>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              Moments of <span className="text-gradient-ocean">Wonder</span>
+      {/* --- Gallery Section --- */}
+      <section id="gallery" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-cyan-600 font-bold tracking-wider uppercase text-sm">Visual Diary</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 mt-2">
+              Captured Moments
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Captured memories from our incredible ocean adventures. Your next unforgettable moment awaits.
+            <p className="text-lg text-slate-600">
+              Real photos from our daily excursions. No stock filters, just pure ocean beauty.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {galleryImages.map((img, idx) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[200px]">
+            {galleryImages.slice(0, isGalleryExpanded ? galleryImages.length : initialGalleryCount).map((img, idx) => (
               <div
                 key={idx}
-                className={`relative overflow-hidden rounded-xl group cursor-pointer ${
-                  idx === 0 ? "md:col-span-2 md:row-span-2" : ""
-                }`}
+                onClick={() => setSelectedImage(img.src)}
+                className={`relative rounded-2xl overflow-hidden cursor-zoom-in group shadow-md
+                  ${idx === 0 ? "col-span-2 row-span-2 md:col-span-2 md:row-span-2" : "col-span-1 row-span-1"}
+                `}
               >
                 <img
                   src={img.src}
                   alt={img.alt}
-                  className={`w-full object-cover group-hover:scale-110 transition-transform duration-500 ${
-                    idx === 0 ? "h-64 md:h-full" : "h-48 md:h-64"
-                  }`}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <p className="absolute bottom-4 left-4 text-white font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  {img.alt}
-                </p>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="bg-white/20 backdrop-blur-md p-3 rounded-full text-white">
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
+
+          <div className="flex justify-center mt-12">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => setIsGalleryExpanded(!isGalleryExpanded)}
+              className="rounded-full px-8 border-slate-200 text-slate-700 hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-all shadow-sm"
+            >
+              {isGalleryExpanded ? "Show Less" : "Load More Photos"}
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-gradient-to-b from-white to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* --- About Section --- */}
+      <section id="about" className="py-24 bg-slate-50 relative overflow-hidden">
+        {/* Decorative blobs */}
+        <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-cyan-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-x-1/2 translate-y-1/2" />
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Text Content */}
             <div>
-              <Badge className="bg-secondary/10 text-secondary mb-4">About Us</Badge>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-                Your Trusted <span className="text-gradient-ocean">Ocean Guides</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-wide mb-6">
+                Established 2010
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                Authentic Mirissa. <br/>
+                <span className="text-blue-600">Personalized Service.</span>
               </h2>
-              <p className="text-lg text-muted-foreground mb-6">
-                Muthu tours Mirissa is a local business which provide facilities to experience the oceanic glamour of Southern Sri Lanka. We fulfill your expectations in a memorable and safety manner. We are ready to customize our trips and packages as your requests.
-                Try Muthu tours to get the best out of your trip to Sri Lanka.
-              </p>
-              <div className="grid sm:grid-cols-2 gap-6 mb-8">
+              
+              <div className="space-y-6 text-lg text-slate-600 mb-8 leading-relaxed">
+                <p>
+                  Muthu Tours is a locally owned service founded by Sandun Muthumala. For over 8 years, we have been the trusted choice for travelers seeking genuine ocean experiences away from the crowded tourist traps.
+                </p>
+                <p>
+                  We believe the Sri Lankan ocean should be explored with respect and precision. We aren't just boat drivers; we are ocean enthusiasts ready to show you the hidden beauty of Mirissa.
+                </p>
+              </div>
+
+              {/* Owner's Note Card */}
+              <div className="bg-white border-l-4 border-blue-600 p-6 rounded-r-xl shadow-lg relative overflow-hidden group hover:shadow-xl transition-shadow">
+                <div className="absolute top-0 right-0 p-4 opacity-5">
+                   <AnchorIcon size={100} />
+                </div>
+                <h4 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                  <span className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-blue-600"><UsersIcon /></span>
+                  A Note from Sandun
+                </h4>
+                <p className="italic text-slate-600 text-sm md:text-base">
+                  "I handle every tour coordination myself. No agents, no middlemen. When you book with Muthu Tours, you are booking directly with me and my local crew. Watch out for imitators!"
+                </p>
+              </div>
+
+              {/* Stats Cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10">
                 {[
-                  { number: "15+", label: "Years Experience" },
-                  { number: "50K+", label: "Happy Guests" },
-                  { number: "98%", label: "Satisfaction Rate" },
-                  { number: "5", label: "Star Rating" },
-                ].map((stat, idx) => (
-                  <div key={idx} className="text-center p-4 rounded-xl bg-white shadow-md">
-                    <p className="text-3xl font-bold text-primary">{stat.number}</p>
-                    <p className="text-muted-foreground">{stat.label}</p>
+                  { label: "Years Active", value: "8+" },
+                  { label: "Happy Guests", value: "5k+" },
+                  { label: "Rating", value: "5.0" },
+                  { label: "Safety Record", value: "100%" },
+                ].map((stat, i) => (
+                  <div key={i} className="text-center p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
+                    <div className="text-2xl font-bold text-slate-900">{stat.value}</div>
+                    <div className="text-xs text-slate-500 uppercase font-medium mt-1">{stat.label}</div>
                   </div>
                 ))}
               </div>
-              <Button size="lg" className="gradient-ocean" asChild>
-                <a href="#contact">Get In Touch</a>
-              </Button>
+
+              {/* NEW: Get Info Button (Added here as requested) */}
+              <div className="mt-10">
+                <Button 
+                  onClick={scrollToContact}
+                  className="bg-slate-900 text-white rounded-full px-8 py-6 text-lg font-medium hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl flex items-center gap-2 w-full sm:w-auto justify-center"
+                >
+                  Get Info <span className="text-xl">→</span>
+                </Button>
+              </div>
+
             </div>
-            <div className="relative">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://www.newenglandinnsandresorts.com/sites/default/files/uploads/2015/08/new-england-whale-watching.jpg"
-                  alt="Whale watching tour"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl max-w-xs hidden lg:block">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="w-12 h-12 rounded-full gradient-ocean flex items-center justify-center text-white">
-                    <AnchorIcon />
-                  </div>
-                  <div>
-                    <p className="font-bold">Captain Joe</p>
-                    <p className="text-sm text-muted-foreground">Lead Captain, 20yr exp</p>
-                  </div>
-                </div>
-                <p className="text-sm text-muted-foreground italic">"Every trip is a new adventure. I love sharing the ocean's magic with our guests."</p>
-              </div>
+
+            {/* Image Composition */}
+            <div className="relative h-[600px] w-full hidden lg:block">
+              <div className="absolute top-10 left-10 w-3/4 h-3/4 bg-slate-200 rounded-[3rem] rotate-3" />
+              <img
+                src="/images/15.jpeg"
+                alt="Whale watching boat"
+                className="absolute top-0 left-0 w-3/4 h-3/4 object-cover rounded-[3rem] shadow-2xl z-10 hover:rotate-1 transition-transform duration-500"
+              />
+              <img
+                src="/images/muthu.jpg"
+                alt="Sandun Muthumala"
+                className="absolute bottom-10 right-4 w-1/2 h-1/2 object-cover rounded-[2rem] shadow-2xl border-8 border-white z-20 hover:-translate-y-2 transition-transform duration-500"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-20 bg-primary/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <Badge className="bg-primary/10 text-primary mb-4">Testimonials</Badge>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-              What Our <span className="text-gradient-ocean">Guests Say</span>
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Don't just take our word for it. Here's what adventurers like you have experienced.
-            </p>
+      {/* --- Testimonials Section --- */}
+      <section id="testimonials" className="py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+            <div>
+              <Badge className="bg-blue-500/20 text-blue-200 hover:bg-blue-500/30 mb-4 border-0">Traveler Reviews</Badge>
+              <h2 className="text-4xl md:text-5xl font-bold">Stories from the Sea</h2>
+            </div>
+            <div className="flex items-center gap-2 text-yellow-400 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
+              <StarIcon /> <span className="font-bold text-white">5.0</span> <span className="text-white/60 text-sm">Average Rating</span>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {testimonials.map((testimonial, idx) => (
-              <Card key={idx} className="border-0 shadow-lg hover:shadow-xl transition-shadow">
+            {testimonials.map((t, idx) => (
+              <Card key={idx} className="bg-white/5 border-white/10 backdrop-blur-sm text-slate-100 hover:bg-white/10 transition-colors duration-300">
                 <CardContent className="pt-6">
-                  <div className="flex items-center gap-1 text-secondary mb-4">
-                    {Array.from({ length: testimonial.rating }).map((_, i) => (
-                      <StarIcon key={i} />
-                    ))}
+                  <div className="flex gap-1 text-yellow-400 mb-4">
+                    {[...Array(t.rating)].map((_, i) => <StarIcon key={i} />)}
                   </div>
-                  <p className="text-foreground/80 mb-4 italic">"{testimonial.text}"</p>
-                  <Badge variant="outline" className="mb-4">{testimonial.tour}</Badge>
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full gradient-ocean flex items-center justify-center text-white font-bold">
-                      {testimonial.avatar}
+                  <p className="text-slate-300 text-sm leading-relaxed mb-6 min-h-[80px]">"{t.text}"</p>
+                  
+                  <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center font-bold text-white text-sm shadow-lg">
+                      {t.avatar}
                     </div>
                     <div>
-                      <p className="font-medium">{testimonial.name}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                      <p className="font-semibold text-sm">{t.name}</p>
+                      <p className="text-xs text-slate-400">{t.location}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -601,250 +648,279 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <Badge className="bg-accent/10 text-accent mb-4">Contact Us</Badge>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
-                Ready to Set <span className="text-gradient-ocean">Sail?</span>
-              </h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Have questions or need help planning your adventure? Our friendly team is here to help you create the perfect ocean experience.
-              </p>
-
-              <div className="space-y-6">
-                {[
-                  { icon: <MapPinIcon />, title: "Location", content: "49 A, Bandaramulla, Mirissa, Srilanka." },
-                  { icon: <PhoneIcon />, title: "Phone", content: "+94 71 4343478, +94 71 4013477(whatsapp)" },
-                  { icon: <MailIcon />, title: "Email", content: " muthutoursmirissa@gmail.com" },
-                  { icon: <ClockIcon />, title: "Hours", content: "Daily: 6:00 AM - 8:00 PM" },
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                      {item.icon}
+      {/* --- Contact Section --- */}
+      <section id="contact" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="bg-blue-600 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+            
+            {/* Info Side */}
+            <div className="lg:w-2/5 p-10 md:p-16 bg-blue-600 text-white flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+              
+              <div className="relative z-10">
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Plan Your Trip</h2>
+                <p className="text-blue-100 mb-10 text-lg">
+                  Have questions about the weather, whale season, or custom packages? We're here to help.
+                </p>
+                
+                <div className="space-y-8">
+                  {[
+                    { icon: <MapPinIcon />, title: "Visit Us", content: "49 A, Bandaramulla, Mirissa, Sri Lanka" },
+                    { icon: <PhoneIcon />, title: "Call / WhatsApp", content: "+94 71 434 3478" },
+                    { icon: <MailIcon />, title: "Email Us", content: "muthutoursmirissa@gmail.com" },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center backdrop-blur-md flex-shrink-0">
+                        {item.icon}
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg">{item.title}</h3>
+                        <p className="text-blue-100 opacity-90">{item.content}</p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-medium">{item.title}</p>
-                      <p className="text-muted-foreground">{item.content}</p>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+              
+              <div className="relative z-10 mt-12 flex gap-4">
+                 {/* Social placeholders could go here */}
               </div>
             </div>
 
-            <Card className="border-0 shadow-xl">
-              <CardHeader>
-                <CardTitle>Send Us a Message</CardTitle>
-                <CardDescription>Fill out the form below and we'll get back to you shortly.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid sm:grid-cols-2 gap-4">
+            {/* Form Side */}
+            <div className="lg:w-3/5 bg-white p-10 md:p-16">
+              <div className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="John" />
+                    <Label className="text-slate-600">First Name</Label>
+                    <Input placeholder="John" className="bg-slate-50 border-slate-200 h-12" />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Doe" />
+                    <Label className="text-slate-600">Last Name</Label>
+                    <Input placeholder="Doe" className="bg-slate-50 border-slate-200 h-12" />
                   </div>
                 </div>
+
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="john@example.com" />
+                  <Label className="text-slate-600">Email Address</Label>
+                  <Input type="email" placeholder="john@example.com" className="bg-slate-50 border-slate-200 h-12" />
                 </div>
+
                 <div className="space-y-2">
-                  <Label htmlFor="tour">Interested In</Label>
+                  <Label className="text-slate-600">Interested In</Label>
                   <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select a tour" />
+                    <SelectTrigger className="bg-slate-50 border-slate-200 h-12">
+                      <SelectValue placeholder="Select an adventure" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="snorkeling">Snorkeling Adventure</SelectItem>
-                      <SelectItem value="whale-watching">Whale Watching</SelectItem>
                       <SelectItem value="fishing">Deep Sea Fishing</SelectItem>
-                      <SelectItem value="general">General Inquiry</SelectItem>
+                      <SelectItem value="snorkeling">Snorkeling</SelectItem>
+                      <SelectItem value="whales">Whale Watching</SelectItem>
+                      <SelectItem value="other">General Inquiry</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
+
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" placeholder="Tell us about your adventure plans..." rows={4} />
+                  <Label className="text-slate-600">Message</Label>
+                  <Textarea placeholder="Tell us about your dates and group size..." className="bg-slate-50 border-slate-200 min-h-[150px] resize-none" />
                 </div>
-                <Button className="w-full gradient-ocean text-lg py-6">Send Message</Button>
-              </CardContent>
-            </Card>
+
+                <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white h-14 text-lg rounded-xl shadow-lg">
+                  Send Message
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-foreground text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 rounded-full gradient-ocean flex items-center justify-center">
-                  <WaveIcon />
-                </div>
-                <span className="text-xl font-bold">Ocean Adventures</span>
+      {/* --- Footer --- */}
+      <footer className="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 text-white mb-4">
+                <div className="bg-blue-600 w-8 h-8 rounded-lg flex items-center justify-center"><WaveIcon /></div>
+                <span className="text-xl font-bold">gomirissa</span>
               </div>
-              <p className="text-white/70 mb-4">
-                Creating unforgettable ocean experiences since 2010. Your adventure awaits!
+              <p className="text-sm leading-relaxed">
+                Creating unforgettable ocean memories in Sri Lanka since 2010. Authentic, safe, and locally guided.
               </p>
             </div>
+            
             <div>
-              <h4 className="font-bold mb-4">Tours</h4>
-              <ul className="space-y-2 text-white/70">
-                <li><a href="#tours" className="hover:text-white transition-colors">Snorkeling Adventure</a></li>
-                <li><a href="#tours" className="hover:text-white transition-colors">Whale Watching</a></li>
-                <li><a href="#tours" className="hover:text-white transition-colors">Deep Sea Fishing</a></li>
-                <li><a href="#tours" className="hover:text-white transition-colors">Private Charters</a></li>
+              <h4 className="text-white font-bold mb-6">Experiences</h4>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#" className="hover:text-blue-500 transition-colors">Snorkeling with Turtles</a></li>
+                <li><a href="#" className="hover:text-blue-500 transition-colors">Whale Watching</a></li>
+                <li><a href="#" className="hover:text-blue-500 transition-colors">Deep Sea Fishing</a></li>
+                <li><a href="#" className="hover:text-blue-500 transition-colors">Private Boat Hire</a></li>
               </ul>
             </div>
+            
             <div>
-              <h4 className="font-bold mb-4">Company</h4>
-              <ul className="space-y-2 text-white/70">
-                <li><a href="#about" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#testimonials" className="hover:text-white transition-colors">Reviews</a></li>
-                <li><a href="#gallery" className="hover:text-white transition-colors">Gallery</a></li>
-                <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
+              <h4 className="text-white font-bold mb-6">Company</h4>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#about" className="hover:text-blue-500 transition-colors">About Us</a></li>
+                <li><a href="#gallery" className="hover:text-blue-500 transition-colors">Gallery</a></li>
+                <li><a href="#testimonials" className="hover:text-blue-500 transition-colors">Reviews</a></li>
+                <li><a href="#contact" className="hover:text-blue-500 transition-colors">Contact</a></li>
               </ul>
             </div>
+            
             <div>
-              <h4 className="font-bold mb-4">Contact</h4>
-              <ul className="space-y-2 text-white/70">
-                <li className="flex items-center gap-2">
-                  <MapPinIcon />
-                  <span>123 Harbor Drive</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <PhoneIcon />
-                  <span>(555) 123-4567</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <MailIcon />
-                  <span>hello@oceanadventures.com</span>
-                </li>
+              <h4 className="text-white font-bold mb-6">Legal</h4>
+              <ul className="space-y-3 text-sm">
+                <li><a href="#" className="hover:text-blue-500 transition-colors">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-blue-500 transition-colors">Terms of Service</a></li>
+                <li><a href="#" className="hover:text-blue-500 transition-colors">Cancellation Policy</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-white/20 pt-8 text-center text-white/60">
-            <p>&copy; 2024 Ocean Adventures. All rights reserved.</p>
+          
+          <div className="pt-8 border-t border-slate-900 text-center text-xs">
+            <p>&copy; {new Date().getFullYear()} Muthu Tours Mirissa. All rights reserved.</p>
           </div>
         </div>
       </footer>
 
-      {/* Booking Dialog */}
+      {/* --- Booking Dialog --- */}
       <Dialog open={bookingOpen} onOpenChange={setBookingOpen}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="text-2xl">Book Your Adventure</DialogTitle>
-            <DialogDescription>
-              Select your tour, date, and party size to begin your ocean adventure.
-            </DialogDescription>
-          </DialogHeader>
+        <DialogContent className="max-w-2xl bg-white p-0 overflow-hidden gap-0 rounded-2xl">
+          <div className="bg-slate-900 p-6 text-white">
+            <DialogHeader>
+              <DialogTitle className="text-2xl">Book Your Adventure</DialogTitle>
+              <DialogDescription className="text-slate-400">
+                Secure your spot on the boat. No payment required today.
+              </DialogDescription>
+            </DialogHeader>
+          </div>
 
-          <Tabs defaultValue="details" className="mt-4">
-            <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="details">Tour Details</TabsTrigger>
-              <TabsTrigger value="calendar">Select Date</TabsTrigger>
-            </TabsList>
+          <div className="p-6 max-h-[70vh] overflow-y-auto">
+            <Tabs defaultValue="details" className="w-full">
+              <TabsList className="grid w-full grid-cols-2 mb-6">
+                <TabsTrigger value="details">Tour Options</TabsTrigger>
+                <TabsTrigger value="calendar">Select Date</TabsTrigger>
+              </TabsList>
 
-            <TabsContent value="details" className="space-y-4 mt-4">
-              <div className="space-y-2">
-                <Label>Select Tour</Label>
-                <Select value={selectedTour} onValueChange={setSelectedTour}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Choose your adventure" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {tours.map((tour) => (
-                      <SelectItem key={tour.id} value={tour.id}>
-                        {tour.title} - ${tour.price}/person
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-4">
+              <TabsContent value="details" className="space-y-5">
                 <div className="space-y-2">
-                  <Label>Number of Guests</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select" />
+                  <Label>Select Experience</Label>
+                  <Select value={selectedTour} onValueChange={setSelectedTour}>
+                    <SelectTrigger className="h-11">
+                      <SelectValue placeholder="Choose your adventure" />
                     </SelectTrigger>
                     <SelectContent>
-                      {Array.from({ length: 10 }).map((_, i) => (
-                        <SelectItem key={i + 1} value={String(i + 1)}>
-                          {i + 1} {i === 0 ? "Guest" : "Guests"}
+                      {tours.map((tour) => (
+                        <SelectItem key={tour.id} value={tour.id}>
+                          {tour.title} — ${tour.price}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="space-y-2">
-                  <Label>Preferred Time</Label>
-                  <Select>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="morning">Morning (6:00 AM)</SelectItem>
-                      <SelectItem value="midday">Midday (11:00 AM)</SelectItem>
-                      <SelectItem value="afternoon">Afternoon (2:00 PM)</SelectItem>
-                    </SelectContent>
-                  </Select>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label>Guests</Label>
+                    <Select>
+                      <SelectTrigger className="h-11">
+                        <SelectValue placeholder="1 Guest" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {[...Array(10)].map((_, i) => (
+                          <SelectItem key={i} value={String(i + 1)}>{i + 1} {i === 0 ? "Guest" : "Guests"}</SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Time Slot</Label>
+                    <Select>
+                      <SelectTrigger className="h-11">
+                        <SelectValue placeholder="Morning (6:00 AM)" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="morning">Morning (6:00 AM)</SelectItem>
+                        <SelectItem value="midday">Midday (11:00 AM)</SelectItem>
+                        <SelectItem value="afternoon">Afternoon (2:00 PM)</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="bookingName">Full Name</Label>
-                <Input id="bookingName" placeholder="John Doe" />
-              </div>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="bookingEmail">Email</Label>
-                  <Input id="bookingEmail" type="email" placeholder="john@example.com" />
+                <div className="space-y-4 pt-4 border-t">
+                  <div className="space-y-2">
+                    <Label>Full Name</Label>
+                    <Input placeholder="Enter your name" className="h-11" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label>Email</Label>
+                      <Input type="email" placeholder="Email address" className="h-11" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Phone / WhatsApp</Label>
+                      <Input type="tel" placeholder="Phone number" className="h-11" />
+                    </div>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="bookingPhone">Phone</Label>
-                  <Input id="bookingPhone" type="tel" placeholder="(555) 123-4567" />
+              </TabsContent>
+
+              <TabsContent value="calendar">
+                <div className="flex flex-col items-center justify-center p-4 bg-slate-50 rounded-xl border">
+                  <Calendar
+                    mode="single"
+                    selected={selectedDate}
+                    onSelect={setSelectedDate}
+                    className="rounded-md"
+                    disabled={(date) => date < new Date()}
+                  />
+                  {selectedDate && (
+                    <div className="mt-4 text-center bg-blue-100 text-blue-800 px-4 py-2 rounded-lg text-sm font-medium w-full">
+                      Selected: {selectedDate.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                    </div>
+                  )}
                 </div>
-              </div>
-            </TabsContent>
+              </TabsContent>
+            </Tabs>
+          </div>
 
-            <TabsContent value="calendar" className="mt-4">
-              <div className="flex justify-center">
-                <Calendar
-                  mode="single"
-                  selected={selectedDate}
-                  onSelect={setSelectedDate}
-                  className="rounded-md border"
-                  disabled={(date) => date < new Date()}
-                />
-              </div>
-              {selectedDate && (
-                <p className="text-center mt-4 text-primary font-medium">
-                  Selected: {selectedDate.toLocaleDateString("en-US", { weekday: "long", year: "numeric", month: "long", day: "numeric" })}
-                </p>
-              )}
-            </TabsContent>
-          </Tabs>
-
-          <div className="flex gap-4 mt-6">
-            <Button variant="outline" className="flex-1" onClick={() => setBookingOpen(false)}>
+          <div className="p-6 bg-slate-50 border-t flex gap-3">
+            <Button variant="outline" onClick={() => setBookingOpen(false)} className="flex-1 h-12">
               Cancel
             </Button>
-            <Button className="flex-1 gradient-ocean">
-              Complete Booking
+            <Button className="flex-1 h-12 bg-blue-600 hover:bg-blue-700 text-white">
+              Confirm Request
             </Button>
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* --- Image Lightbox --- */}
+      <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+        <DialogContent className="max-w-[100vw] h-screen bg-black/90 border-0 p-0 flex items-center justify-center focus:outline-none">
+          <button 
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-6 right-6 z-50 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-all backdrop-blur-md"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          
+          {selectedImage && (
+            <img
+              src={selectedImage}
+              alt="Gallery Fullscreen"
+              className="max-h-[90vh] max-w-[95vw] object-contain shadow-2xl animate-in fade-in zoom-in duration-300"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
+
     </main>
   );
 }
